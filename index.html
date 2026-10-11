@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Holi 💖</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+    background: linear-gradient(135deg, #27002e, #72004d, #180024);
+    overflow-x: hidden;
+}
+
+.page {
+    min-height: 100vh;
+    width: 100%;
+    padding: 25px 15px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#page1 {
+    display: flex;
+}
+
+h1 {
+    font-size: 30px;
+    text-shadow: 0 0 15px #ff80c0;
+}
+
+.instruction {
+    font-size: 21px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.bigHeart {
+    font-size: 130px;
+    cursor: pointer;
+    animation: heartbeat 1s infinite;
+    filter: drop-shadow(0 0 25px #ff4da6);
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+/* Flowers falling */
+
+.flower {
+    position: fixed;
+    top: -50px;
+    z-index: 10;
+    pointer-events: none;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(115vh) rotate(500deg);
+        opacity: 0;
+    }
+}
+
+/* Gifts */
+
+.gifts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+    gap: 18px;
+    width: 100%;
+    max-width: 380px;
+    margin-top: 20px;
+}
+
+.gift {
+    min-height: 135px;
+    background: rgba(255,255,255,0.12);
+    border: 2px solid #ffb4dc;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 0 15px #ff42a1;
+    transition: transform .25s;
+}
+
+.gift:active {
+    transform: scale(.92);
+}
+
+.gift span {
+    font-size: 52px;
+}
+
+.gift p {
+    margin: 8px 0 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#gift5 {
+    grid-column: 1 / -1;
+    min-height: 110px;
+}
+
+.messageBox {
+    display: none;
+    width: 90%;
+    max-width: 350px;
+    padding: 30px 20px;
+    margin-top: 25px;
+    border-radius: 25px;
+    border: 2px solid #ffc0e0;
+    background: rgba(255,255,255,0.13);
+    box-shadow: 0 0 30px #ff4da6;
+    animation: appear .5s ease;
+}
+
+.messageBox p {
+    font-size: 24px;
+    line-height: 1.5;
+}
+
+button {
+    margin-top: 20px;
+    border: none;
+    border-radius: 25px;
+    padding: 13px 25px;
+    background: #ff5aa9;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: scale(.7); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.finalHeart {
+    font-size: 90px;
+    animation: heartbeat 1s infinite;
+}
+
+.finalText {
+    font-size: 27px;
+    line-height: 1.6;
+    max-width: 400px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<section class="page" id="page1">
+    <div class="instruction">DON'T TAP THE HEART 😜</div>
+
+    <div class="bigHeart" onclick="startSurprise()">
+        💖
+    </div>
+
+    <h1>HOLI 💖</h1>
+    <p>Ek chhota sa surprise tumhare liye 🌸</p>
+</section>
+
+
+<!-- PAGE 2 -->
+<section class="page" id="page2">
+    <h1>For My Holi 🌸</h1>
+    <p>Choose a gift, open a surprise! 🎁</p>
+
+    <div class="gifts">
+
+        <div class="gift" onclick="openGift(1)">
+            <span>🎁</span>
+            <p>Gift 1</p>
+        </div>
+
+        <div class="gift" onclick="openGift(2)">
+            <span>🎀</span>
+            <p>Gift 2</p>
+        </div>
+
+        <div class="gift" onclick="openGift(3)">
+            <span>💝</span>
+            <p>Gift 3</p>
+        </div>
+
+        <div class="gift" onclick="openGift(4)">
+            <span>🎁</span>
+            <p>Gift 4</p>
+        </div>
+
+        <div class="gift" id="gift5" onclick="openGift(5)">
+            <span>💌</span>
+            <p>Gift 5 — Special</p>
+        </div>
+
+    </div>
+
+    <div class="messageBox" id="messageBox">
+        <p id="giftMessage"></p>
+        <button onclick="closeGift()">Back to Gifts 🌸</button>
+    </div>
+
+    <button id="finishButton" style="display:none"
+        onclick="showFinal()">Open Final Surprise ❤️</button>
+</section>
+
+
+<!-- PAGE 3 -->
+<section class="page" id="page3">
+    <div class="finalHeart">💖</div>
+
+    <h1>My Special Holi 🌸</h1>
+
+    <div class="finalText">
+        Aap mere khaas ho! 🥹💗<br>
+        Aapki khushi mere liye special hai.<br>
+        Always keep smiling 😊<br><br>
+        <strong>I LOVE YOU ❤️❤️</strong>
+    </div>
+
+    <p>Always stay happy, Holi 🌷✨</p>
+</section>
+
+
+<script>
+const messages = {
+    1: "Aapki smile lajawab hai! 😊💖 Hamesha aise hi muskurate raho.",
+    2: "Aapke baal mujhe pagal kar dete hain! 😍🌸",
+    3: "Itne cute ho ki main pagal ho jaun! 🥹💗",
+    4: "I LOVE YOU JAAN ❤️❤️🌹",
+    5: "ALWAYS WITH YOU 💖🤝 Chahe kuch bhi ho, hamesha khush rehna!"
+};
+
+let openedGifts = new Set();
+
+function changePage(pageId) {
+    document.querySelectorAll(".page").forEach(page => {
+        page.style.display = "none";
+    });
+
+    document.getElementById(pageId).style.display = "flex";
+}
+
+function startSurprise() {
+    changePage("page2");
+    flowerRain(100);
+}
+
+function flowerRain(amount) {
+    const flowers = ["🌸", "🌷", "🌹", "🌺", "💮", "🌼", "💖"];
+
+    for (let i = 0; i < amount; i++) {
+        setTimeout(() => {
+            const flower = document.createElement("div");
+            flower.className = "flower";
+            flower.textContent =
+                flowers[Math.floor(Math.random() * flowers.length)];
+
+            flower.style.left = Math.random() * 100 + "vw";
+            flower.style.fontSize = (20 + Math.random() * 20) + "px";
+            flower.style.animationDuration = (3 + Math.random() * 4) + "s";
+
+            document.body.appendChild(flower);
+
+            setTimeout(() => flower.remove(), 7500);
+        }, i * 35);
+    }
+}
+
+function openGift(number) {
+    document.getElementById("giftMessage").textContent = messages[number];
+    document.getElementById("messageBox").style.display = "block";
+
+    openedGifts.add(number);
+
+    if (openedGifts.size === 5) {
+        document.getElementById("finishButton").style.display = "inline-block";
+    }
+
+    flowerRain(18);
+}
+
+function closeGift() {
+    document.getElementById("messageBox").style.display = "none";
+}
+
+function showFinal() {
+    changePage("page3");
+    flowerRain(100);
+}
+</script>
+
+</body>
+  </html>
